@@ -2,12 +2,9 @@ spring:
   application:
     name: devmobile
   datasource:
-    # url: jdbc:postgresql://dpg-ct0ikkt6l47c73b5ju3g-a.oregon-postgres.render.com/pi_database_n20p
-    # username: pi_database_n20p_user
-    # password: 3t0ZWITP1lBLkMPsmSNHodAyytLaI2Zs
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: admin
-    password: admin
+    url: ${PG_DB_URL:jdbc:postgresql://localhost:5432/postgres}
+    username: ${PG_DB_USERNAME:admin}
+    password: ${PG_DB_PASSWORD:admin}
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
