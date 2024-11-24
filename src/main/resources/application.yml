@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: devmobile
+  datasource:
+    # url: jdbc:postgresql://dpg-ct0ikkt6l47c73b5ju3g-a.oregon-postgres.render.com/pi_database_n20p
+    # username: pi_database_n20p_user
+    # password: 3t0ZWITP1lBLkMPsmSNHodAyytLaI2Zs
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: admin
+    password: admin
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: none
+  sql:
+    init:
+      mode: never
+
+server:
+  servlet:
+    context-path: /api/v1
