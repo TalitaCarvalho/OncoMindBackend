@@ -21,7 +21,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import br.com.faculdade.devmobile.model.ScheduleModel;
 import br.com.faculdade.devmobile.service.ScheduleService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Controller
 @RequiredArgsConstructor
 @RequestMapping("agendamentos")
@@ -71,8 +73,13 @@ public class ScheduleController {
     @PutMapping("{id}")
     @CrossOrigin(originPatterns = "*")
     public ResponseEntity<ScheduleModel> update(@RequestBody ScheduleModel body) {
-        ScheduleModel newSchedule = scheduleService.createSchedule(body);
-        return ResponseEntity.status(201).body(newSchedule);
+        try {
+            ScheduleModel newSchedule = scheduleService.createSchedule(body);
+            return ResponseEntity.status(201).body(newSchedule);
+        } catch (Exception e) {
+            log.error("Falha ao atualizar item " + body.getId(), e);
+            return ResponseEntity.internalServerError().build();
+        }
     }
 
 }

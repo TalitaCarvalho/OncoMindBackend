@@ -39,7 +39,7 @@ public class ScheduleModel {
     @NotNull(message = "O campo horário é obrigatório")
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "HORARIO", nullable = false)
-    private OffsetDateTime date;
+    private String date;
 
     @ManyToOne
     @JoinColumn(name = "ID_MEDICO", nullable = false)
